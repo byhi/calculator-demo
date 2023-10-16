@@ -1,0 +1,11 @@
+<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/"
+                  xmlns:gs="demo-gen">
+    <soapenv:Header/>
+    <soapenv:Body>
+        <gs:getCalculationRequest>
+            <gs:xParapm>5</gs:xParapm>
+            <gs:yParapm>10.1213</gs:yParapm>
+            <gs:operationType>DIVISION</gs:operationType>
+        </gs:getCalculationRequest>
+    </soapenv:Body>
+</soapenv:Envelope>

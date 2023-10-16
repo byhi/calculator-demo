@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<con:soapui-project id="c151e9ec-8c9e-4162-b14e-957b8a4de08a" activeEnvironment="Default" name="intalion-demo-test" resourceRoot="" soapui-version="5.7.1" xmlns:con="http://eviware.com/soapui/config"><con:settings/><con:interface xsi:type="con:WsdlInterface" id="b93ffb1d-b447-4cae-ae50-d5d57448cf08" wsaVersion="NONE" name="CountriesPortSoap11" type="wsdl" bindingName="{demo-gen}CountriesPortSoap11" soapVersion="1_1" anonymous="optional" definition="file:/C:/Users/byhik/eclipse_workspace/intalion-demo/calculation.wsdl.xml" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:settings/><con:definitionCache type="TEXT" rootPart="file:\C:\Users\byhik\eclipse_workspace\intalion-demo\calculation.wsdl.xml"><con:part><con:url>file:\C:\Users\byhik\eclipse_workspace\intalion-demo\calculation.wsdl.xml</con:url><con:content><![CDATA[<wsdl:definitions targetNamespace="demo-gen" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:sch="demo-gen" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tns="demo-gen">
+  <wsdl:types>
+    <xs:schema elementFormDefault="qualified" targetNamespace="demo-gen" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+      <xs:element name="getCalculationRequest">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="xParapm" type="xs:decimal"/>
+            <xs:element name="yParapm" type="xs:decimal"/>
+            <xs:element name="operationType" type="tns:operation"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="getCalculationResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="calculation" type="tns:calculationResult"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:simpleType name="operation">
+        <xs:restriction base="xs:string">
+          <xs:enumeration value="ADDITION"/>
+          <xs:enumeration value="SUBTRACTION"/>
+          <xs:enumeration value="MULTIPLICATION"/>
+          <xs:enumeration value="DIVISION"/>
+        </xs:restriction>
+      </xs:simpleType>
+      <xs:complexType name="calculationResult">
+        <xs:sequence>
+          <xs:element name="result" type="xs:decimal"/>
+          <xs:element name="errorCode" type="xs:string"/>
+          <xs:element name="errorMessage" type="xs:string"/>
+        </xs:sequence>
+      </xs:complexType>
+    </xs:schema>
+  </wsdl:types>
+  <wsdl:message name="getCalculationRequest">
+    <wsdl:part element="tns:getCalculationRequest" name="getCalculationRequest"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getCalculationResponse">
+    <wsdl:part element="tns:getCalculationResponse" name="getCalculationResponse"></wsdl:part>
+  </wsdl:message>
+  <wsdl:portType name="CountriesPort">
+    <wsdl:operation name="getCalculation">
+      <wsdl:input message="tns:getCalculationRequest" name="getCalculationRequest"></wsdl:input>
+      <wsdl:output message="tns:getCalculationResponse" name="getCalculationResponse"></wsdl:output>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="CountriesPortSoap11" type="tns:CountriesPort">
+    <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="getCalculation">
+      <soap:operation soapAction=""/>
+      <wsdl:input name="getCalculationRequest">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getCalculationResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="CountriesPortService">
+    <wsdl:port binding="tns:CountriesPortSoap11" name="CountriesPortSoap11">
+      <soap:address location="http://localhost:8080/ws"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>]]></con:content><con:type>http://schemas.xmlsoap.org/wsdl/</con:type></con:part></con:definitionCache><con:endpoints><con:endpoint>http://localhost:8080/ws</con:endpoint></con:endpoints><con:operation id="6e16835b-9df3-4ea6-9915-0b97629e85ea" isOneWay="false" action="" name="getCalculation" bindingOperationName="getCalculation" type="Request-Response" outputName="getCalculationResponse" inputName="getCalculationRequest" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="67ebbbd2-cdeb-43a9-a2df-dc4d60312ec6" name="Request 1"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8080/ws</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:demo="demo-gen">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <demo:getCalculationRequest>\r
+         <demo:xParapm>?</demo:xParapm>\r
+         <demo:yParapm>?</demo:yParapm>\r
+         <demo:operationType>?</demo:operationType>\r
+      </demo:getCalculationRequest>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request><con:wsaConfig mustUnderstand="NONE" version="200508" action="demo-gen/CountriesPort/getCalculationRequest"/></con:call></con:operation></con:interface><con:testSuite id="b2b13fd5-c386-4ca7-a9d9-26317aafeefb" name="CountriesPortSoap11 TestSuite"><con:settings/><con:runType>SEQUENTIAL</con:runType><con:testCase id="2b2a1bef-377c-4814-8e08-9c2bd81ee9db" failOnError="true" failTestCaseOnErrors="true" keepSession="false" maxResults="0" name="getCalculation TestCase" searchProperties="true"><con:settings/><con:testStep type="request" id="4312201c-6215-4290-a768-85b2c6cd5148" name="getCalculation"><con:settings/><con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:interface>CountriesPortSoap11</con:interface><con:operation>getCalculation</con:operation><con:request name="getCalculation" id="0ba39cd1-6107-4690-9d20-c584d099607f"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8080/ws</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:demo="demo-gen">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <demo:getCalculationRequest>\r
+         <demo:xParapm>10.1</demo:xParapm>\r
+         <demo:yParapm></demo:yParapm>\r
+         <demo:operationType>DIVISION</demo:operationType>\r
+      </demo:getCalculationRequest>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig action="demo-gen/CountriesPort/getCalculationRequest" mustUnderstand="NONE" version="200508"/><con:wsrmConfig version="1.2"/></con:request></con:config></con:testStep><con:properties/></con:testCase><con:properties/></con:testSuite><con:properties/><con:wssContainer/><con:oAuth2ProfileContainer/><con:oAuth1ProfileContainer/></con:soapui-project>

@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:tns="demo-gen"
+           targetNamespace="demo-gen" elementFormDefault="qualified">
+
+    <xs:element name="getCalculationRequest">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="xParapm" type="xs:decimal"/>
+                <xs:element name="yParapm" type="xs:decimal"/>
+                <xs:element name="operationType" type="tns:operation"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="getCalculationResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="calculation" type="tns:calculationResult"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    
+    <xs:simpleType name="operation">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="ADDITION"/>
+            <xs:enumeration value="SUBTRACTION"/>
+            <xs:enumeration value="MULTIPLICATION"/>
+            <xs:enumeration value="DIVISION"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+	<xs:complexType name="calculationResult">
+        <xs:sequence>
+            <xs:element name="result" type="xs:decimal"/>
+            <xs:element name="errorCode" type="xs:string"/>
+            <xs:element name="errorMessage" type="xs:string"/>
+        </xs:sequence>
+    </xs:complexType>
+</xs:schema>
